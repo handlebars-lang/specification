@@ -1,3 +1,17 @@
+> DISCLAIMER:
+> This is an attempt to write a specification of the Handlebars language. 
+> I have never before written a formal language specification before and this
+> document is currently neither complete, nor guaranteed to be correct.
+> It just felt fun to start, write something down about and create a basic
+> skeleton for the document 
+> 
+> I am definitely looking for people who help me with this, so [please contact
+> me (via issues)](https://github.com/handlebars-lang/specification/issues) if
+> you are interested. PRs are welcome.
+>
+> Nils Knappmeier
+
+
 The Handlebars Language Specification
 
 Draft 1
@@ -27,7 +41,7 @@ In Handlebars, multiple contexts store data. Each context is organized in a stac
 * Data-Frames contain a set of variables that can be used by Handlebars expressions. New data-frames MAY be created by block-helpers.
 * TODO: Is this correct? A Partial-Scope contains a registered helpers, partials and decorators. A new partial-scope is created when a partial is called.   
 
-# 3.1 Property lookup and execution context ("this")
+## 3.1 Property lookup and execution context ("this")
 
 The syntax `{{propertyPath}}` is used to render the a property from the input data. The following syntax is allowed as property-path:
  
@@ -40,17 +54,23 @@ The syntax `{{propertyPath}}` is used to render the a property from the input da
 
 The execution context initially points to the root of the input object.  
 
-# 3.2 Data-Frames
+TODO: Describe: 
 
-# 3.3 Partial-Scope
+* Segment literals: `{{articles[10].[#comments]}}`
+* Helpers (short) `{{simple}}`
+* Helper (short) parameters: `{{helperName param1 param2 hashParam=paramValue}}`
+
+## 3.2 Data-Frames
+
+## 3.3 Partial-Scope
 
 TODO: Describe the `this` context. Context for data properties (`@first`) and temporary partials (registered through decorators)
 
-## 2.2 Helpers
+# 4 Helpers
 
 Helpers are functions that can be called from the template. The runtime environment SHOULD provide an interface to register a helper under a name. The exact syntax of the function may depend on the implementation.
 
-### 2.2.1 Helper parameters and options
+## 4.1 Helper parameters and options
 
 The helper interface of the runtime environment MUST pass the following information when a helper is called:
 
@@ -61,41 +81,30 @@ The helper interface of the runtime environment MUST pass the following informat
 * the name under which the helper is registered in the runtime
 * 
 
-### 2.2.1 Simple Helpers
+## 4.2 Simple Helpers
 
 
 
 TODO: Describe the helper parameters and return values
 
-### 2.2.2 Block Helpers
+## 4.3 Block Helpers
 
-### 2.2.3 Builtin Helpers
+## 4.4 Builtin Helpers
 
 TODO: Describe the helper parameters and return values
 
-## 2.3 Partials
+# 5 Partials
 
 Describe what partials are and how they can be registered 
 
-## 2.4 Decorators
+# 6 Decorators
 
-### 2.4.1 Defining Decorators
+## 6.1 Defining Decorators
 
-### 2.4.2 Builtin Decorators
+## 6.2 Builtin Decorators
 
 
-# 3 Language Grammar
+# 7 Language Grammar
 
 TODO: Specify lexical grammar here.
 
-# 4 Property lookup
-
-TODO: A handlebars expression is a {{, some contents, followed by a }}
-
-Describe: 
-
-* Simple mustaches `{{title}}`
-* Dot notation `{{article.title}}`
-* Segment literals: `{{articles[10].[#comments]}}`
-* Helpers `{{simple}}`
-* Helper parameters: `{{helperName param1 param2 hashParam=paramValue}}`
