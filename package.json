@@ -1,0 +1,27 @@
+{
+  "name": "spec",
+  "version": "1.0.0",
+  "description": "> DISCLAIMER: > This is an attempt to write a specification of the Handlebars language.  > I have never before written a formal language specification before and this > document is currently neither complete, nor guaranteed to be correct. > It just felt fun to start, write something down about and create a basic > skeleton for the document  >  > I am definitely looking for people who help me with this, so [please contact > me (via issues)](https://github.com/handlebars-lang/specification/issues) if > you are interested. PRs are welcome. > > Nils Knappmeier",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "node bin/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/handlebars-lang/specification.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/handlebars-lang/specification/issues"
+  },
+  "homepage": "https://github.com/handlebars-lang/specification#readme",
+  "dependencies": {
+    "markedpp": "^0.3.10",
+    "pify": "^3.0.0"
+  }
+}
