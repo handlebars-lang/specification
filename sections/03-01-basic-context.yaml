@@ -1,0 +1,53 @@
+paragraphs:
+  - header: Basic context
+    description: |
+      Variables in mustaches (`{{` and `}}`) MUST be replaced by their
+      respective value in  the input json.
+    tests:
+      - summary: Single mustache
+        template: 'a {{foo}} bar'
+        input: { foo: "bar" }
+        expect:
+          output: 'a bar bar'
+      - summary: Multiple mustaches
+        template: 'A {{short}} {{sandy}} path'
+        input: { short: "long", "stony"}
+        expect:
+          output: 'A long stony path'
+      - summary: Different data types
+        template: '{{number}} {{string}} {{boolean}}'
+        input: { number: 1, string: "a", boolean: true}
+        expect:
+          output: 'A long stony path'
+      - summary: Omits null
+        template: 'The value {{value}} is not displayed'
+        input: { value: null}
+        expect:
+          output: 'The value is not displayed'
+  - header: Escaping
+    description: |
+      When a backslash stands directly before an opening mustache,
+      mustache MUST NOT be resolved, but copied to the expectedOutput as is.
+      A backslash before the backslash reverts this behavior MUST
+      be rendered as a single backslash.
+    tests:
+      - summary: Escaped statement
+        template: 'a \{{foo}} bar'
+        input: { foo: 'bar' }
+        expect:
+          output: 'a {{foo}} bar'
+      - summary: Escaped backlash
+        template: 'a \\{{foo}} bar'
+        input: { foo: 'bar' }
+        expect:
+          output: a \bar bar'
+      - summary: Double backlash
+        template: 'a \\\\{{foo}} bar'
+        input: { foo: 'bar' }
+        expect:
+          output: 'a \\bar bar'
+      - summary: Double backslash, not before mustache
+        template: 'a \\\\ {{foo}}'
+        input: { foo: 'bar' }
+        expect:
+          output: 'a \\ bar
